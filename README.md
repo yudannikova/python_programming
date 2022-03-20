@@ -1,2 +1,2 @@
 # python_programming
-Programming on python
+[Python programming](https://stepik.org/course/67)
