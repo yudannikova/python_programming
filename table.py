@@ -2,17 +2,20 @@ string = input()
 matrix = []
 out_matrix = []
 while string != 'end':
-    matrix.append([int(i) for i in string.split()])
-    out_matrix = [[0 for k in range(len(string))] for p in range(len(matrix))]
+    row = [int(ix) for ix in string.split()]
+    matrix.append(row)
+    out_matrix.append([0] * len(row))
     string = input() 
 
-for ix in range(len(matrix)):
-    for jx in range(len(matrix[0])):
-        out_matrix[ix][jx] = [matrix[ix][jx - 1] + matrix[ix][(jx + 1) % len(matrix[0])] + matrix[ix - 1][jx] + matrix[(ix + 1) % len(matrix)][jx]]
+num_rows = len(matrix)
+num_cols = len(matrix[0])
+for row_ix in range(num_rows):
+    for col_ix in range(num_cols):
+        out_matrix[row_ix][col_ix] = matrix[row_ix][col_ix - 1] + matrix[row_ix][(col_ix + 1) % num_cols] + matrix[row_ix - 1][col_ix] + matrix[(row_ix + 1) % num_rows][col_ix]
     
-for ix in range(len(matrix)):
-    for jx in range(len(matrix[0])):
-        print(*(out_matrix[ix][jx]), end=' ')
+for row_ix in range(num_rows):
+    for col_ix in range(num_cols):
+        print(out_matrix[row_ix][col_ix], end=' ')
     print()   
 
 
